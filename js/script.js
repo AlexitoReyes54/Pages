@@ -131,12 +131,13 @@ $(function(){
 				};
 			
 			$.ajax({
-			
+				crossOrigin: true,
 				url: 'mail.php',
 				type: 'post',
+				 headers: { 'Access-Control-Allow-Origin': '*' },
 				data: $this.serialize(),
 				success: function(data){
-					
+					console.log("funciono")
 					if( isJSON(data) ){
 						
 						data = $.parseJSON(data);
@@ -169,6 +170,7 @@ $(function(){
 					
 				},
 				error: function(){
+					console.log("error")
 					$('#contact-form-result').html(alerts.error);
 				}
 			});
